@@ -8,12 +8,10 @@ public/
 routes/api.php
 routes/channels.php
 routes/console.php
-app/Http/Controllers/Auth
-app/Http/Controllers/Controller.php
 app/Http/Kernel.php
 storage/app/
 app/Console
 test/
 routes/
-vendor/
 .env
+vendor/
