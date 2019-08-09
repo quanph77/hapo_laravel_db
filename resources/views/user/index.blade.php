@@ -7,7 +7,7 @@
                 <h2>CRUD-Hapo</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New</a>
+                <a class="btn btn-success" href="{{ route('users.create') }}"> Create New</a>
             </div>
         </div>
     </div>
@@ -28,21 +28,21 @@
             <th>Date of birth</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($products as $product)
+        @foreach ($users as $user)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $product->image }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->email }}</td>
-            <td>{{ $product->phone_number }}</td>
-            <td>{{ $product->dob }}</td>
+            <td>{{ $users->image }}</td>
+            <td>{{ $users->name }}</td>
+            <td>{{ $users->email }}</td>
+            <td>{{ $users->phone_number }}</td>
+            <td>{{ $users->dob }}</td>
             <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                <form action="{{ route('users.destroy',$users->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
    
                     
       
@@ -53,6 +53,6 @@
         @endforeach
     </table>
   
-    {!! $products->links() !!}
+    {!! $users->links() !!}
       
 @endsection

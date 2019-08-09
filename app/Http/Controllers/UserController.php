@@ -2,10 +2,10 @@
   
 namespace App\Http\Controllers;
   
-use App\Product;
+use App\User;
 use Illuminate\Http\Request;
   
-class ProductController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(6);
+        $user = User::latest()->paginate(6);
   
-        return view('products.index',compact('products'))
+        return view('user.index',compact('user'))
             ->with('i', (request()->input('page', 1) - 1) * 6);
     }
    
@@ -27,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('user.create');
     }
   
     /**
@@ -45,41 +45,41 @@ class ProductController extends Controller
             'dob' => 'required',
             'image' => 'required',
         ]);
-        Product::create($request->all());
-        return redirect()->route('products.index')
+        user::create($request->all());
+        return redirect()->route('user.index')
                         ->with('success','User created successfully.');
     }
    
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Product  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(user $user)
     {
-        return view('products.show',compact('product'));
+        return view('user.show',compact('user'));
     }
    
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\user  $product
      * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
+     */user
+    public function edit(user $user)
     {
-        return view('products.edit',compact('product'));
+        return view('user.edit',compact('user'));
     }
   
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, user $user)
     {
         $request->validate([
             'name' => 'required',
@@ -89,23 +89,23 @@ class ProductController extends Controller
             'image' => 'required',
         ]);
   
-        $product->update($request->all());
+        $user->update($request->all());
   
-        return redirect()->route('products.index')
+        return redirect()->route('user.index')
                         ->with('success','User updated successfully');
     }
   
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\user  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(user $user)
     {
-        $product->delete();
+        $user->delete();
   
-        return redirect()->route('products.index')
+        return redirect()->route('user.index')
                         ->with('success','User deleted successfully');
     }
 }
