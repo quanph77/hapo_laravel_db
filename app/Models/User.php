@@ -6,17 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $table = 'users';
     public function role(){
-    	return $this->belongsTo('App\Models\Role','role_id');
+    	return $this->belongsTo('App\Models\Role');
     }
     public function assigns(){
-    	return $this->hasMany('App\Models\Assign','user_id');
+    	return $this->hasMany('App\Models\Assign');
     }
     public function tasks(){
-    	return $this->hasMany('App\Models\Task','user_id');
+    	return $this->hasMany('App\Models\Task');
     }
     public function reports(){
-    	return $this->hasMany('App\Models\Report','user_id');
+    	return $this->hasMany('App\Models\Report');
     }
 }

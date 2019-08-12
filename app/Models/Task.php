@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $table = 'tasks';
     public function project(){
-    	return $this->belongsTo('App\Models\Project','project_id');
+    	return $this->belongsTo('App\Models\Project');
     }
     public function user(){
-    	return $this->belongsTo('App\Models\User','user_id');
+    	return $this->belongsTo('App\Models\User');
     }
     public function users(){
     	return $this->hasMany('App\Models\Task_Report');

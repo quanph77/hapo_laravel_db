@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
 {
-    protected $table = 'reports';
     public function task_reports(){
     	return $this->hasMany('App\Models\Task_Report');
     }

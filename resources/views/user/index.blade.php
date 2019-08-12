@@ -41,11 +41,7 @@
                     @csrf
                     @method('DELETE')
                     <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
-    
                     <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
-   
-                    
-      
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>

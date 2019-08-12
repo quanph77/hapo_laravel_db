@@ -44,8 +44,9 @@ class UserController extends Controller
             'phone_number' => 'required',
             'dob' => 'required',
             'image' => 'required',
+            'address'=>'required',
         ]);
-        user::create($request->all());
+    User::create($request->all());
         return redirect()->route('user.index')
                         ->with('success','User created successfully.');
     }
@@ -83,9 +84,9 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required'|'email|unique',
             'phone_number' => 'required',
-            'dob' => 'required',
+            'dob' => 'required', 'min:8',
             'image' => 'required',
         ]);
   
@@ -106,6 +107,11 @@ class UserController extends Controller
         $user->delete();
   
         return redirect()->route('user.index')
-                        ->with('success','User deleted successfully');
+                         ->with('success','User deleted successfully');
+    }
+    public function add(user $user){
+        $user-add()
+        return redirect()-?route('user.index')
+                          with('success','User add successfully');
     }
 }
